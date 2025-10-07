@@ -1,0 +1,18 @@
+# CMake out-of-source builds
+/build/
+/build-*/
+cmake-build-*/
+
+# IDE
+.vscode/
+.idea/
+
+# 일반 산출물/로그
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+*.log
+latency.csv
