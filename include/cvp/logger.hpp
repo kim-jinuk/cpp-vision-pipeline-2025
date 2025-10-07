@@ -14,7 +14,7 @@ public:
 
     template <typename... Args>
     static void warn(const char* fmt, Args... args) {
-        std::lock_guard<stt::mutex> lk(mu_);
+        std::lock_guard<std::mutex> lk(mu_);
         fprintf(stdout, (std::string("[W] ") + fmt + "\n").c_str(), args...);
     }
 

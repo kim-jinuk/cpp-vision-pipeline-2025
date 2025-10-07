@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcvp_modules.a CMakeFiles/cvp_modules.dir/src/modules/capture/v4l2_capture.cpp.o CMakeFiles/cvp_modules.dir/src/modules/preprocess/basic_preprocess.cpp.o CMakeFiles/cvp_modules.dir/src/modules/infer/onnx_infer.cpp.o CMakeFiles/cvp_modules.dir/src/modules/postprocess/nms.cpp.o CMakeFiles/cvp_modules.dir/src/modules/tracker/sort_tracker.cpp.o CMakeFiles/cvp_modules.dir/src/modules/overlay/draw.cpp.o CMakeFiles/cvp_modules.dir/src/modules/sink/video_writer.cpp.o
+/usr/bin/ranlib libcvp_modules.a

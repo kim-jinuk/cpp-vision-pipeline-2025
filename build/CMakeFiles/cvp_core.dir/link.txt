@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcvp_core.a CMakeFiles/cvp_core.dir/src/core/logger.cpp.o CMakeFiles/cvp_core.dir/src/core/metrics.cpp.o CMakeFiles/cvp_core.dir/src/core/pipeline.cpp.o
+/usr/bin/ranlib libcvp_core.a

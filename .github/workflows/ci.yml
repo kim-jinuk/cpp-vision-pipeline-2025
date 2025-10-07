@@ -1,0 +1,36 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential cmake libopencv-dev python3-matplotlib python3-pandas
+      - name: configure
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+      - name: build
+        run: cmake --build build -j
+      - name: unit tests
+        run: ctest --test-dir build --output-on-failure
+      - name: perf (smoke)
+        run: |
+          mkdir -p data/samples
+          # 작은 샘플 영상을 커밋하지 않았다면, 여기서는 스킵
+          if [ -f data/samples/sample.mp4 ]; then
+            ./build/cvp_app data/samples/sample.mp4 || true
+            python3 tools/plot_latency.py --csv latency.csv --out latency.png || true
+            echo "perf done"
+          else
+            echo "no sample.mp4; skipping perf"
+          fi
+      - name: artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: perf
+          path: |
+            latency.csv
+            latency.png

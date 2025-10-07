@@ -20,7 +20,7 @@ int main(int argc, char** argv) {
         f.id = ++fid;
         f.bgr = img;
         return true;
-    }
+    };
 
     pl.preprocess = [&](Frame& f){ /* resize/denoise 등 추후*/};
     pl.infer = [&](const Frame& f){ /* onnx/tflite 대신 mock */
@@ -29,7 +29,7 @@ int main(int argc, char** argv) {
         return Dets{ Detection{r, 0.9f, 0} };
     };
 
-    pl.postprocess = [&](Const Dets& d){ return d; };
+    pl.postprocess = [&](const Dets& d){ return d; };
     pl.overlay = [&](Frame& f, const Dets& d){
         for (auto& x : d) cv::rectangle(f.bgr, x.box, {0, 255, 0} , 2);
         cv::imshow("cvp", f.bgr);

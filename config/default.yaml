@@ -1,0 +1,5 @@
+input: data/samples/sample.mp4
+resize: [640, 480]
+conf_thr: 0.3
+iou_thr: 0.5
+classes: config/labels.txt
